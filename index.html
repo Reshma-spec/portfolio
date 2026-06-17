@@ -1,509 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>Reshma Reddy Ambati | Portfolio</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Reshma Reddy Ambati | Professional Data Science Portfolio">
+  <title>Reshma Reddy Ambati | Data Science Portfolio</title>
+  <!-- Google Fonts + Tailwind + Font Awesome + AOS + Chart.js + html2pdf -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Three.js -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; transition: background 0.3s, color 0.2s; }
+    .gradient-text {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 20px -5px rgba(37,99,235,0.3); }
+    .btn-outline {
+      border: 1.5px solid #3b82f6;
+      color: #3b82f6;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: #3b82f6; color: white; }
+    .skill-tag {
+      background: rgba(59,130,246,0.08);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 0.5px solid rgba(59,130,246,0.2);
+    }
+    .dark .skill-tag { background: rgba(59,130,246,0.12); }
+    .project-card {
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); }
+    .resume-preview {
+      background: white;
+      color: #1e293b;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+    }
+    .dark .resume-preview {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    /* 3D Container */
+    #hero-3d-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background: transparent;
+    }
+    #hero-3d-container canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #resume-print-area, #resume-print-area * { visibility: visible; }
+      #resume-print-area { position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 1rem; }
+      .no-print { display: none; }
+      #hero-3d-container { display: none; }
+    }
+  </style>
 </head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-<body>
-
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar">
-
-  <div class="nav-container">
-
-    <a href="#hero" class="nav-logo">
-      Reshma Reddy
-    </a>
-
-    <div class="nav-links">
-
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#skills">Skills</a>
-      <a href="#certifications">Certificates</a>
-      <a href="#contact">Contact</a>
-
-    </div>
-
-  </div>
-
-</nav>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="hero">
-
-  <p class="greeting">
-    Hello, I am
-  </p>
-
-  <h1>Ambati Reshma Reddy</h1>
-
-  <h2>
-    Aspiring Software Engineer | Data Science Student
-  </h2>
-
-  <p class="hero-description">
-
-    Passionate about AI-powered applications,
-    cybersecurity solutions, data analytics,
-    and full-stack web development.
-
-  </p>
-
-  <div class="hero-buttons">
-
-    <a href="#projects" class="btn">
-      View Projects
-    </a>
-
-    <a href="#contact" class="btn btn-secondary">
-      Contact Me
-    </a>
-
-    <a href="resume.pdf" download class="btn">
-      Download Resume
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ================= PROJECTS ================= -->
-
-<section class="projects" id="projects">
-
-  <h2>Projects</h2>
-
-  <div class="projects-grid">
-
-    <!-- PROJECT 1 -->
-
-    <div class="project-card">
-
-      <h3>SENTINEL-AI</h3>
-
-      <p>
-
-        AI-powered security and monitoring system
-        for real-time threat detection,
-        intelligent monitoring, automation,
-        and cybersecurity-based solutions.
-
-      </p>
-
-      <div class="project-tech">
-
-        <span>Python</span>
-        <span>AI/ML</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 no-print">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center flex-wrap">
+      <a href="#" class="text-xl font-bold tracking-tight"><span class="gradient-text">Reshma Reddy</span> <span class="text-gray-700 dark:text-gray-300">Ambati</span></a>
+      <div class="flex items-center gap-6">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#home" class="hover:text-blue-600 transition">Home</a>
+          <a href="#about" class="hover:text-blue-600 transition">About</a>
+          <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+          <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+          <a href="#resume-section" class="hover:text-blue-600 transition">Resume</a>
+          <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        </div>
+        <button id="darkModeToggle" class="text-xl p-2 rounded-full bg-gray-100 dark:bg-gray-800"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
       </div>
-
-      <a href="https://github.com/jahhnavvii/SENTINEL-AI"
-      target="_blank"
-      class="btn">
-
-        GitHub
-
-      </a>
-
     </div>
+  </nav>
 
-    <!-- PROJECT 2 -->
-
-    <div class="project-card">
-
-      <h3>MoodNova</h3>
-
-      <p>
-
-        Mood tracking web application
-        with personalized recommendations
-        and weekly mood analysis dashboard.
-
-      </p>
-
-      <div class="project-tech">
-
-        <span>Python</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-
+  <main>
+    <!-- Hero Section with 3D Icosahedron -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative px-6 py-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 -z-10"></div>
+      <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12" data-aos="fade-up">
+        <div class="flex-1 text-center lg:text-left">
+          <span class="text-blue-600 dark:text-blue-400 font-semibold tracking-wide">Data Science | AI/ML</span>
+          <h1 class="text-5xl md:text-6xl font-bold mt-2 leading-tight">Reshma Reddy <span class="gradient-text">Ambati</span></h1>
+          <div class="text-xl md:text-2xl mt-4 font-medium text-gray-700 dark:text-gray-300">
+            <span id="typed-text" class="border-r-2 border-blue-500 pr-1"></span>
+          </div>
+          <p class="mt-6 text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0">Turning Data into Insights and Insights into Impact. Aspiring Data Scientist passionate about AI, ML, and building data-driven solutions.</p>
+          <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+            <a href="#projects" class="btn-primary px-6 py-3 rounded-full text-white font-semibold">View Projects <i class="fas fa-arrow-right ml-2"></i></a>
+            <button id="downloadResumeBtn" class="btn-outline px-6 py-3 rounded-full font-semibold"><i class="fas fa-download mr-2"></i> Resume</button>
+            <a href="#contact" class="border border-gray-300 dark:border-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">Contact</a>
+          </div>
+          <div class="flex gap-5 mt-8 justify-center lg:justify-start text-2xl">
+            <a href="https://github.com/Reshma-spec" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/reshmareddy-ambati" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:reshmareddyambati@gmail.com" class="hover:text-blue-600 transition"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="flex-1 flex justify-center">
+          <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 p-1 shadow-xl">
+            <div id="hero-3d-container" class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800"></div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <a href="https://github.com/Reshma-spec/moodnova"
-      target="_blank"
-      class="btn">
-
-        GitHub
-
-      </a>
-
-    </div>
-
-    <!-- PROJECT 3 -->
-
-    <div class="project-card">
-
-      <h3>AI Stock Market Analysis</h3>
-
-      <p>
-
-        AI-based stock market analysis
-        platform with prediction features,
-        dashboards, and visualization tools.
-
-      </p>
-
-      <div class="project-tech">
-
-        <span>Python</span>
-        <span>AI/ML</span>
-        <span>Pandas</span>
-        <span>Matplotlib</span>
-
+    <!-- About -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800/40">
+      <div class="container mx-auto px-6" data-aos="fade-right">
+        <h2 class="text-3xl font-bold text-center mb-10">About <span class="gradient-text">Me</span></h2>
+        <div class="max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800/60 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+          <p class="mb-4">I'm currently pursuing <strong>B.Tech in Data Science</strong> at <strong>Malla Reddy College of Engineering and Technology</strong> (2024–2028) with a CGPA of <strong>8.10/10.0</strong>. My passion lies in Data Analytics, Machine Learning, Artificial Intelligence, and building data-driven solutions.</p>
+          <p class="mb-4">My career objective is to become a Data Scientist who creates AI-driven innovations that make a tangible impact. I have hands-on experience in EDA, feature engineering, model building, and deploying intelligent systems.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-8 text-center">
+            <div><span class="text-2xl font-bold text-blue-600">8.10</span><br />CGPA</div>
+            <div><span class="text-2xl font-bold text-blue-600">15+</span><br />Projects</div>
+            <div><span class="text-2xl font-bold text-blue-600">3</span><br />Internships</div>
+            <div><span class="text-2xl font-bold text-blue-600">11+</span><br />Certifications</div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <a href="https://github.com/Reshma-spec/AI_Stock_Project"
-      target="_blank"
-      class="btn">
-
-        GitHub
-
-      </a>
-
-    </div>
-
-    <!-- PROJECT 4 -->
-
-    <div class="project-card">
-
-      <h3>SORO</h3>
-
-      <p>
-
-        Smart Appliances Resource Optimization System
-        with responsive UI and backend integration.
-
-      </p>
-
-      <div class="project-tech">
-
-        <span>Python</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-
+    <!-- Skills -->
+    <section id="skills" class="py-20">
+      <div class="container mx-auto px-6" data-aos="zoom-in">
+        <h2 class="text-3xl font-bold text-center mb-10">Technical <span class="gradient-text">Skills</span></h2>
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 grid sm:grid-cols-2 gap-5">
+            <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl border border-gray-200 dark:border-gray-700"><h3 class="font-semibold mb-3 text-blue-600">Programming</h3><div class="flex flex-wrap gap-2"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Java (Basic)</span><span class="skill-tag">C++ (Basic)</span></div></div>
+            <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl border border-gray-200 dark:border-gray-700"><h3 class="font-semibold mb-3 text-blue-600">Data Science</h3><div class="flex flex-wrap gap-2"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Statistics</span><span class="skill-tag">EDA</span><span class="skill-tag">Feature Eng.</span><span class="skill-tag">ML</span></div></div>
+            <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl border border-gray-200 dark:border-gray-700"><h3 class="font-semibold mb-3 text-blue-600">Visualization</h3><div class="flex flex-wrap gap-2"><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span><span class="skill-tag">Power BI</span><span class="skill-tag">Excel</span></div></div>
+            <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl border border-gray-200 dark:border-gray-700"><h3 class="font-semibold mb-3 text-blue-600">Databases & Tools</h3><div class="flex flex-wrap gap-2"><span class="skill-tag">MySQL</span><span class="skill-tag">Snowflake</span><span class="skill-tag">GitHub</span><span class="skill-tag">Jupyter</span><span class="skill-tag">Google Colab</span></div></div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col items-center">
+            <h3 class="font-semibold mb-3">Skill Proficiency</h3>
+            <canvas id="radarChart" width="300" height="300" style="max-width: 260px;"></canvas>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <a href="https://github.com/Reshma-spec/soro"
-      target="_blank"
-      class="btn">
-
-        GitHub
-
-      </a>
-
-    </div>
-
-    <!-- PROJECT 5 -->
-
-    <div class="project-card">
-
-      <h3>Hotel Management Data Analysis</h3>
-
-      <p>
-
-        Snowflake and SQL-based hotel booking analytics
-        project for generating business insights and reports.
-
-      </p>
-
-      <div class="project-tech">
-
-        <span>Snowflake</span>
-        <span>SQL</span>
-        <span>Analytics</span>
-
+    <!-- Projects with GitHub links -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Featured <span class="gradient-text">Projects</span></h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">AI Resume Screener</h3><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">NLP-based resume parsing & ranking.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">Python</span><span class="skill-tag text-xs">NLP</span></div><a href="https://github.com/Reshma-spec/AI-Resume-Screener" target="_blank" class="text-blue-600 text-sm inline-flex items-center gap-1"><i class="fab fa-github"></i> GitHub</a></div></div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">AI Stock Market</h3><p>Predict stock trends using ML.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">Python</span><span class="skill-tag text-xs">ML</span></div><a href="https://github.com/Reshma-spec/AI_Stock_Project" target="_blank" class="text-blue-600 text-sm"><i class="fab fa-github"></i> GitHub</a></div></div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">Hotel Analytics</h3><p>Snowflake SQL queries, revenue analysis.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">SQL</span><span class="skill-tag text-xs">Snowflake</span></div><a href="https://github.com/Reshma-spec/Hotel-Data-Analytics" target="_blank" class="text-blue-600 text-sm"><i class="fab fa-github"></i> GitHub</a></div></div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">MoodNova</h3><p>Mood tracking web app.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">Python/Flask</span></div><a href="https://github.com/Reshma-spec/moodnova" target="_blank" class="text-blue-600 text-sm"><i class="fab fa-github"></i> GitHub</a></div></div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">SENTINEL-AI</h3><p>AI security monitoring.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">AI/ML</span></div><a href="https://github.com/jahhnavvii/SENTINEL-AI" target="_blank" class="text-blue-600 text-sm"><i class="fab fa-github"></i> GitHub</a></div></div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition project-card"><img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600&h=200&fit=crop" class="h-40 w-full object-cover"><div class="p-5"><h3 class="text-xl font-bold">SORO</h3><p>Smart Appliances Optimization.</p><div class="flex flex-wrap gap-1 my-2"><span class="skill-tag text-xs">Python/Django</span></div><a href="https://github.com/Reshma-spec/soro" target="_blank" class="text-blue-600 text-sm"><i class="fab fa-github"></i> GitHub</a></div></div>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= TIMELINE ================= -->
-
-<section class="timeline" id="timeline">
-
-  <h2>My Journey</h2>
-
-  <div class="timeline-chain">
-
-    <div class="timeline-item">
-
-      <span class="circle"></span>
-
-      <div class="content">
-
-        <h3>2024 – Present</h3>
-
-        <h4>B.Tech – Data Science</h4>
-
-        <p>
-          Malla Reddy College of Engineering and Technology
-        </p>
-
-        <p>
-          Current CGPA: 8.10
-        </p>
-
+    <!-- Internships -->
+    <section id="internships" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Internship <span class="gradient-text">Experience</span></h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-6 text-center rounded-xl border border-gray-200 dark:border-gray-700"><i class="fas fa-briefcase text-3xl text-blue-500 mb-3"></i><h3 class="text-xl font-bold">KODBUD</h3><p class="text-sm">Data Science Intern | June - Aug 2025</p><div class="flex justify-center gap-2 mt-2"><span class="skill-tag text-xs">Python</span><span class="skill-tag text-xs">EDA</span></div><a href="#" class="text-xs text-blue-600 mt-2 inline-block">📜 Offer Letter</a></div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-6 text-center rounded-xl border border-gray-200 dark:border-gray-700"><i class="fas fa-laptop-code text-3xl text-blue-500 mb-3"></i><h3 class="text-xl font-bold">CODSOFT</h3><p class="text-sm">AI/ML Intern | May - July 2025</p><div class="flex justify-center gap-2 mt-2"><span class="skill-tag text-xs">ML</span><span class="skill-tag text-xs">NLP</span></div><a href="#" class="text-xs text-blue-600">Certificate</a></div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-6 text-center rounded-xl border border-gray-200 dark:border-gray-700"><i class="fas fa-chart-line text-3xl text-blue-500 mb-3"></i><h3 class="text-xl font-bold">OASIS INFOBYTE</h3><p class="text-sm">Data Science Intern | Apr - June 2025</p><div class="flex justify-center gap-2 mt-2"><span class="skill-tag text-xs">Power BI</span></div><a href="#" class="text-xs text-blue-600">Offer + Cert</a></div>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-    <div class="timeline-item">
-
-      <span class="circle"></span>
-
-      <div class="content">
-
-        <h3>2022 – 2024</h3>
-
-        <h4>Intermediate (MPC)</h4>
-
-        <p>
-          Sri Chaitanya Junior College, Hyderabad
-        </p>
-
-        <p>
-          Score: 76%
-        </p>
-
+    <!-- Certifications -->
+    <section id="certifications" class="py-20 bg-gray-50 dark:bg-gray-800/20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Certifications & <span class="gradient-text">Licenses</span></h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fab fa-google text-2xl text-blue-500"></i><div><p class="font-semibold text-sm">Google Cloud</p><p class="text-xs text-gray-500">Google</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fas fa-network-wired text-2xl text-cyan-600"></i><div><p class="font-semibold text-sm">Cisco Networking</p><p class="text-xs text-gray-500">Cisco</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fas fa-hammer text-2xl text-orange-500"></i><div><p class="font-semibold text-sm">Forge Certification</p><p class="text-xs text-gray-500">Forge/LinkedIn</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fas fa-certificate text-2xl text-yellow-500"></i><div><p class="font-semibold text-sm">Cambridge</p><p class="text-xs text-gray-500">Cambridge</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fab fa-salesforce text-2xl text-green-500"></i><div><p class="font-semibold text-sm">AgentX Hackathon</p><p class="text-xs text-gray-500">Salesforce</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fas fa-chalkboard-user text-2xl text-indigo-500"></i><div><p class="font-semibold text-sm">TCS Career Program</p><p class="text-xs text-gray-500">TCS</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fab fa-google text-2xl text-red-500"></i><div><p class="font-semibold text-sm">GDG Volunteer</p><p class="text-xs text-gray-500">GDG MRCET</p></div></div>
+          <div class="bg-white dark:bg-gray-800 flex items-center gap-3 p-3 rounded-xl shadow-sm border"><i class="fas fa-university text-2xl text-purple-500"></i><div><p class="font-semibold text-sm">KL University Presenter</p><p class="text-xs text-gray-500">MoodNova Award</p></div></div>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-    <div class="timeline-item">
-
-      <span class="circle"></span>
-
-      <div class="content">
-
-        <h3>Completed 2022</h3>
-
-        <h4>Schooling</h4>
-
-        <p>
-          Manjeera High School, Hyderabad
-        </p>
-
-        <p>
-          Score: 97%
-        </p>
-
+    <!-- Achievements -->
+    <section id="achievements" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Achievements & <span class="gradient-text">Leadership</span></h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl text-center border"><i class="fas fa-trophy text-3xl text-yellow-500 mb-2"></i><h3 class="font-bold">AgentX Hackathon</h3><p class="text-sm">Finalist, Salesforce</p></div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl text-center border"><i class="fas fa-users text-3xl text-blue-500 mb-2"></i><h3 class="font-bold">GDG Volunteer</h3><p class="text-sm">RECON2ROOT CTF</p></div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl text-center border"><i class="fas fa-microphone-alt text-3xl text-purple-500 mb-2"></i><h3 class="font-bold">Project Presenter</h3><p class="text-sm">Tech Fests</p></div>
+          <div class="bg-gray-50 dark:bg-gray-800/40 p-5 rounded-xl text-center border"><i class="fas fa-medal text-3xl text-green-500 mb-2"></i><h3 class="font-bold">Academic Excellence</h3><p class="text-sm">97% in Schooling</p></div>
+        </div>
       </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= SKILLS ================= -->
-
-<section class="skills" id="skills">
-
-  <h2>Technical Skills</h2>
-
-  <h3>Programming Languages</h3>
-
-  <div class="skills-container">
-
-    <span>Python</span>
-    <span>SQL</span>
-    <span>C++</span>
-    <span>Java</span>
-    <span>JavaScript</span>
-    <span>HTML</span>
-    <span>CSS</span>
-
-  </div>
-
-  <h3>Data Science & Analytics</h3>
-
-  <div class="skills-container">
-
-    <span>Pandas</span>
-    <span>NumPy</span>
-    <span>Matplotlib</span>
-    <span>Scikit-learn</span>
-    <span>EDA</span>
-    <span>Feature Engineering</span>
-    <span>Data Visualization</span>
-
-  </div>
-
-  <h3>Tools & Platforms</h3>
-
-  <div class="skills-container">
-
-    <span>GitHub</span>
-    <span>Google Colab</span>
-    <span>Jupyter Notebook</span>
-    <span>Excel</span>
-    <span>Snowflake</span>
-    <span>MySQL</span>
-
-  </div>
-
-</section>
-
-<!-- ================= CERTIFICATIONS ================= -->
-
-<section class="certifications" id="certifications">
-
-  <h2>Certifications & Achievements</h2>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-
-      <h3>Cambridge Certification</h3>
-
-      <p>
-        Completed certified training program from Cambridge.
-      </p>
-
-    </div>
-
-    <div class="project-card">
-
-      <h3>DCode Web Designing Workshop</h3>
-
-      <p>
-        Workshop focused on HTML, CSS,
-        and responsive web development.
-      </p>
-
-    </div>
-
-    <div class="project-card">
-
-      <h3>AgentX Hackathon – Salesforce</h3>
-
-      <p>
-        Participated in Salesforce-based hackathon
-        and CRM workflow solutions.
-      </p>
-
-    </div>
-
-    <div class="project-card">
-
-      <h3>GDG MRCET – RECON2ROOT CTF</h3>
-
-      <p>
-        Volunteer appreciation certificate
-        for cybersecurity event.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact" id="contact">
-
-  <h2>Get In Touch</h2>
-
-  <p>
-
-    I’m currently open to internships,
-    collaborations, and software opportunities.
-
-  </p>
-
-  <form class="contact-form">
-
-    <input type="text"
-    placeholder="Your Name"
-    required />
-
-    <input type="email"
-    placeholder="Your Email"
-    required />
-
-    <textarea
-    placeholder="Your Message"
-    rows="5"
-    required></textarea>
-
-    <button type="submit" class="btn">
-      Send Message
-    </button>
-
-  </form>
-
-  <!-- SOCIAL LINKS -->
-
-  <div class="social-links">
-
-    <p>Connect With Me</p>
-
-    <a href="https://github.com/Reshma-spec"
-    target="_blank">
-
-      <i class="fab fa-github"></i>
-
-    </a>
-
-    <a href="https://linkedin.com/in/reshmareddy-ambati"
-    target="_blank">
-
-      <i class="fab fa-linkedin"></i>
-
-    </a>
-
-    <a href="mailto:reshmareddyambati@gmail.com">
-
-      <i class="fas fa-envelope"></i>
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-  © 2026 Ambati Reshma Reddy
-
-</footer>
-
+    </section>
+
+    <!-- Resume -->
+    <section id="resume-section" class="py-20 bg-gray-50 dark:bg-gray-800/20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Professional <span class="gradient-text">Resume</span></h2>
+        <div id="resume-print-area" class="resume-preview">
+          <div class="flex flex-col md:flex-row justify-between items-start border-b pb-4 mb-4">
+            <div><h1 class="text-2xl font-extrabold text-gray-800">Reshma Reddy Ambati</h1><p class="text-blue-600 font-medium">Aspiring Data Scientist</p><p class="text-sm text-gray-600">Turning Data into Insights.</p></div>
+            <div class="text-right mt-2 md:mt-0"><p class="text-sm"><i class="fas fa-envelope"></i> reshmareddyambati@gmail.com</p><p class="text-sm"><i class="fas fa-phone-alt"></i> +91 8332921809</p><p class="text-sm"><i class="fab fa-linkedin"></i> linkedin.com/in/reshmareddy-ambati</p><p class="text-sm"><i class="fab fa-github"></i> github.com/Reshma-spec</p></div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="md:col-span-2">
+              <h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mb-2">Education</h3>
+              <p><strong>MRCET</strong> – B.Tech Data Science (2024-2028) | CGPA: 8.10</p>
+              <p><strong>Intermediate</strong> – Sri Chaitanya, 76%</p><p><strong>Schooling</strong> – Manjeera High School, 97%</p>
+              <h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mt-4 mb-2">Internships</h3>
+              <ul class="list-disc list-inside text-sm"><li><strong>KODBUD</strong> – Data Science Intern</li><li><strong>CODSOFT</strong> – AI/ML Intern</li><li><strong>OASIS INFOBYTE</strong> – Data Science Intern</li></ul>
+              <h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mt-4 mb-2">Key Projects</h3>
+              <ul class="list-disc list-inside text-sm"><li>AI Resume Screener, AI Stock Market, Hotel Analytics, MoodNova, SENTINEL-AI, SORO</li></ul>
+            </div>
+            <div><h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mb-2">Skills</h3><div class="flex flex-wrap gap-1"><span class="bg-gray-200 px-2 py-1 rounded text-xs">Python</span><span class="bg-gray-200 px-2 py-1 rounded text-xs">SQL</span><span class="bg-gray-200 px-2 py-1 rounded text-xs">Pandas</span><span class="bg-gray-200 px-2 py-1 rounded text-xs">ML</span></div><h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mt-4 mb-2">Certifications</h3><ul class="text-xs list-disc pl-4"><li>Google Cloud, Cisco, Forge, Cambridge, AgentX, TCS, GDG, KLU</li></ul><h3 class="font-bold text-lg border-l-4 border-blue-500 pl-2 mt-4 mb-2">Achievements</h3><p class="text-xs">🏆 AgentX Finalist | 🧑‍💻 GDG Volunteer | 📊 KL University Presenter</p></div>
+          </div>
+          <div class="text-center text-xs text-gray-500 border-t mt-4 pt-3">📍 Telangana, India | Open for opportunities</div>
+        </div>
+        <div class="flex justify-center gap-4 mt-6 no-print">
+          <button id="downloadResumePDF" class="btn-primary px-8 py-3 rounded-full text-white shadow-md"><i class="fas fa-file-pdf mr-2"></i> Download PDF</button>
+          <button onclick="window.print();" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition"><i class="fas fa-print mr-2"></i> Print</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Get In <span class="gradient-text">Touch</span></h2>
+        <div class="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <div class="space-y-5">
+            <div class="flex items-center gap-4"><i class="fab fa-linkedin text-2xl text-blue-600 w-8"></i><div><p class="font-semibold">LinkedIn</p><a href="https://linkedin.com/in/reshmareddy-ambati" class="text-sm">/reshmareddy-ambati</a></div></div>
+            <div class="flex items-center gap-4"><i class="fab fa-github text-2xl w-8"></i><div><p class="font-semibold">GitHub</p><a href="https://github.com/Reshma-spec" class="text-sm">/Reshma-spec</a></div></div>
+            <div class="flex items-center gap-4"><i class="fas fa-envelope text-2xl text-red-500 w-8"></i><div><p class="font-semibold">Email</p><a href="mailto:reshmareddyambati@gmail.com" class="text-sm">reshmareddyambati@gmail.com</a></div></div>
+            <div class="flex items-center gap-4"><i class="fas fa-phone-alt text-2xl text-green-500 w-8"></i><div><p class="font-semibold">Phone</p><span class="text-sm">+91 8332921809</span></div></div>
+            <div class="flex items-center gap-4"><i class="fas fa-map-marker-alt text-2xl text-purple-500 w-8"></i><div><p class="font-semibold">Location</p><span class="text-sm">Telangana, India</span></div></div>
+          </div>
+          <form id="contactForm" class="bg-gray-50 dark:bg-gray-800/40 p-6 rounded-xl border border-gray-200 dark:border-gray-700 space-y-4">
+            <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg bg-white dark:bg-gray-800 border" required>
+            <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-white dark:bg-gray-800 border" required>
+            <textarea rows="4" id="message" placeholder="Your Message" class="w-full p-3 rounded-lg bg-white dark:bg-gray-800 border"></textarea>
+            <button type="submit" class="btn-primary w-full py-3 rounded-lg text-white font-semibold">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
+            <p id="formStatus" class="text-sm text-center text-blue-600"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-6 text-center border-t border-gray-200 dark:border-gray-800 no-print">
+      <p>Designed by <span class="gradient-text font-bold">Reshma Reddy Ambati</span></p>
+      <p class="text-sm text-gray-500">© 2026 | Data Science Portfolio</p>
+    </footer>
+  </main>
+
+  <!-- Three.js Module for 3D Icosahedron -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const container = document.getElementById('hero-3d-container');
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, width/height, 0.1, 1000);
+    camera.position.set(0, 0, 3.2);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setClearColor(0x000000, 0);
+    renderer.shadowMap.enabled = true;
+    container.appendChild(renderer.domElement);
+
+    // Main Icosahedron
+    const geo = new THREE.IcosahedronGeometry(0.9, 1);
+    const mat = new THREE.MeshPhysicalMaterial({
+      color: 0x3b82f6,
+      metalness: 0.4,
+      roughness: 0.2,
+      emissive: 0x1e40af,
+      emissiveIntensity: 0.15,
+      clearcoat: 0.3,
+      transparent: true,
+      opacity: 0.95
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.castShadow = true;
+    scene.add(mesh);
+
+    // Wireframe overlay (inner glow)
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x60a5fa,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.25
+    });
+    const wireMesh = new THREE.Mesh(geo, wireMat);
+    wireMesh.scale.set(1.01, 1.01, 1.01);
+    scene.add(wireMesh);
+
+    // Ambient light
+    const ambient = new THREE.AmbientLight(0x404060);
+    scene.add(ambient);
+
+    // Directional light
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(2, 3, 4);
+    scene.add(dirLight);
+
+    const backLight = new THREE.PointLight(0x3b82f6, 0.6);
+    backLight.position.set(-1, -1, -2);
+    scene.add(backLight);
+
+    // Rotation animation
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.x += 0.005;
+      mesh.rotation.y += 0.01;
+      wireMesh.rotation.x = mesh.rotation.x;
+      wireMesh.rotation.y = mesh.rotation.y;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+
+  <script>
+    // Dark Mode
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+
+    // Typing
+    const typedEl = document.getElementById('typed-text');
+    const phrases = ["Aspiring Data Scientist", "AI & ML Enthusiast", "Data Analyst", "Problem Solver"];
+    let idx = 0, charIdx = 0, isDeleting = false;
+    function typeEffect() {
+      const current = phrases[idx];
+      if (isDeleting) typedEl.innerText = current.substring(0, charIdx--);
+      else typedEl.innerText = current.substring(0, charIdx++);
+      if (!isDeleting && charIdx === current.length) isDeleting = true;
+      else if (isDeleting && charIdx === 0) { isDeleting = false; idx = (idx+1)%phrases.length; }
+      setTimeout(typeEffect, isDeleting ? 70 : 120);
+    }
+    typeEffect();
+
+    // Radar Chart
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar', data: { labels: ['Python','SQL','ML','Pandas','PowerBI','Snowflake','Stats','EDA'], datasets: [{ label: 'Proficiency', data: [90,85,82,88,75,70,85,90], backgroundColor: 'rgba(59,130,246,0.2)', borderColor: '#3b82f6', borderWidth: 2, pointBackgroundColor: '#3b82f6' }] },
+      options: { responsive: true, maintainAspectRatio: true, scales: { r: { beginAtZero: true, max: 100 } } }
+    });
+
+    // PDF Download
+    const downloadPDF = () => {
+      const element = document.getElementById('resume-print-area');
+      html2pdf().set({ margin: 0.5, filename: 'Reshma_Reddy_Resume.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(element).save();
+    };
+    document.getElementById('downloadResumePDF').addEventListener('click', downloadPDF);
+    document.getElementById('downloadResumeBtn').addEventListener('click', downloadPDF);
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('formStatus').innerText = '✓ Message sent! Reshma will reach out soon.';
+      document.getElementById('contactForm').reset();
+    });
+
+    AOS.init({ duration: 800, once: true });
+  </script>
 </body>
 </html>
